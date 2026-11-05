@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - ShopEasy</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4">Our Products</h1>
+    <!-- Product Search -->
+    <div class="mb-4">
+       <input
+           type="text"
+           id="searchInput"
+           class="form-control"
+           placeholder="Search products..."
+           onkeyup="searchProducts()"
+    >
+</div>
+<!-- Product Category Filter -->
+    <div class="text-center mb-4">
+        <button class="btn btn-primary m-1" onclick="filterCategory('all')">
+            All Products
+        </button>
+
+        <button class="btn btn-outline-primary m-1" onclick="filterCategory('electronics')">
+            Electronics
+        </button>
+
+        <button class="btn btn-outline-primary m-1" onclick="filterCategory('fashion')">
+            Fashion
+        </button>
+
+        <button class="btn btn-outline-primary m-1" onclick="filterCategory('accessories')">
+            Accessories
+        </button>
+    </div>
+    <!-- Product Sorting -->
+    <div class="mb-4">
+        <select id="sortProducts" class="form-select" onchange="sortProducts()">
+            <option value="">Sort Products</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+            <option value="name">Name: A to Z</option>
+        </select>
+    </div>
+    
+    <div class="row" id="productList">
+
+    <!-- Sports Shoes -->
+
+        <div class="col-md-4 mb-4 product-item" data-category="fashion">
+            <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500"
+                class="card-img-top" alt="Black Sports Shoes">
+                <div class="card-body">
+                    <h5>Sports Shoes</h5>
+                    
+                    
+                    <p class="text-warning mb-2">
+                        ★★★★★ <span class="text-dark">4.5/5</span>
+                    </p>
+                    <p>Price: ₹1499</p>
+
+                    <button class="btn btn-success"
+                        onclick="addToCart('Sports Shoes', 1499, 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500')">
+                        Add to Cart
+                    </button>
+
+                    <button class="btn btn-outline-danger mt-2"
+                        onclick="addToWishlist('Sports Shoes', 1499, 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500')">
+                        ❤️ Add to Wishlist
+                    </button>
+
+                    <hr>
+
+                    <h6>Customer Reviews</h6>
+
+                    <input type="text" class="form-control mb-2"
+                            id="reviewName" placeholder="Enter your name">
+
+                    <select id="reviewRating" class="form-select mb-2">
+                        <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                        <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                        <option value="3">⭐⭐⭐ (3 Stars)</option>
+                        <option value="2">⭐⭐ (2 Stars)</option>
+                        <option value="1">⭐ (1 Star)</option>
+                    </select>
+
+                    <textarea id="reviewText" class="form-control mb-2"
+                              placeholder="Write your review"></textarea>
+
+                    <button class="btn btn-primary btn-sm"
+                            onclick="addReview()">
+                        Submit Review
+                    </button>
+
+                    <div id="reviewList" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Watch -->
+       <div class="col-md-4 mb-4 product-item" data-category="electronics">
+            <div class="card h-100">
+
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+                     class="card-img-top" alt="Smart Watch">
+
+                <div class="card-body">
+                    <h5>Smart Watch</h5>
+                    <p class="text-warning mb-2">
+                        ★★★★☆ <span class="text-dark">4.0/5</span>
+                    </p>
+                    <p>Price: ₹2499</p>
+
+                    <button class="btn btn-success"
+                        onclick="addToCart('Smart Watch', 2499, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Bag -->
+        <div class="col-md-4 mb-4 product-item" data-category="accessories">
+            <div class="card h-100">
+
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500"
+                     class="card-img-top" alt="Travel Bag">
+
+                <div class="card-body">
+                    <h5>Travel Bag</h5>
+                    <p class="text-warning mb-2">
+                        ★★★★★ <span class="text-dark">4.8/5</span>
+                    </p>
+                    <p>Price: ₹999</p>
+
+                    <button class="btn btn-success"
+                        onclick="addToCart('Travel Bag', 999, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <a href="cart.html" class="btn btn-primary mt-3">View Cart</a>
+    <a href="index.html" class="btn btn-secondary mt-3">Back to Home</a>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
+```
+
+// ShopEasy Product Search
+
+function searchProducts() {
+    const searchValue = document
+        .getElementById("searchInput")
+        .value.toLowerCase();
+
+    const products = document.querySelectorAll(".product-item");
+
+    products.forEach(function (product) {
+        const productName = product
+            .querySelector("h5")
+            .textContent.toLowerCase();
+
+        if (productName.includes(searchValue)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}

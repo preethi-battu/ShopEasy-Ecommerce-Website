@@ -1,0 +1,105 @@
+
+.hero {
+    background-color: #e9f2ff;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.card {
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.hero {
+    padding: 80px 20px;
+}
+
+.card {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+/* ShopEasy Mobile Responsive Design */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 50px 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .navbar .container {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .navbar .btn {
+        margin: 3px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    button, .btn {
+        max-width: 100%;
+    }
+
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+}
